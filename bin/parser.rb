@@ -6,7 +6,6 @@ SUPPORTED_FILE_EXTENTIONS = ['.txt','.log'].freeze
 
 def parse_weblog(log_file)
   check_file_extention(log_file)
-
   stats_hash = Hash.new do |hash, key|
     hash[key] = {
       total_views: 0,
@@ -21,11 +20,9 @@ def parse_weblog(log_file)
     if IPAddress.valid? ip
       update_stats_hash(stats_hash, ip, url)
     end
-
   end
 
   most_visits, unique_visits = get_most_visits(stats_hash), get_unique_visits(stats_hash)
-
 end
 
 def get_most_visits(stats_hash)
